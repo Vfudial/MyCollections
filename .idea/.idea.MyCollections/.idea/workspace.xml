@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4bc98b7f-2804-4170-981d-3d84971b56df" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MyCollections/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MyCollections/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyCollections/MyCollections.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/Emoji.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/Emoji.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/bin/Debug/net7.0/Emojis.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/bin/Debug/net7.0/Emojis.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/bin/Debug/net7.0/Emojis.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/bin/Debug/net7.0/Emojis.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/Emojis.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/ref/Emojis.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/ref/Emojis.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/refint/Emojis.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Debug/net7.0/refint/Emojis.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Emojis.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Emojis.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/Emojis.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/Emojis.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Emojis/Emojis/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Emojis/Emojis/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyCollections/BinaryTree/TreePoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyCollections/BinaryTree/TreePoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyCollections/HashTable/HashTablePoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyCollections/HashTable/HashTablePoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyCollections/List/ListPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MyCollections/List/ListPoint.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Vfudial&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Vfudial/Emojis.git&quot;,
+    &quot;accountId&quot;: &quot;40ea7e4c-4983-439c-8569-9e415c3b601c&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/MyCollections/BinaryTree/TreePoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MyCollections/HashTable/HashTablePoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MyCollections/List/ListPoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///usr/local/share/dotnet/sdk/7.0.317/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_7_default.editorconfig" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2xk0UAAxGZaDBZHkU6nebZl8hCt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4bc98b7f-2804-4170-981d-3d84971b56df" name="Changes" comment="" />
+      <created>1748466777028</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748466777028</updated>
+      <workItem from="1748466778174" duration="248000" />
+      <workItem from="1748467559902" duration="435000" />
+      <workItem from="1748468173774" duration="419000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
