@@ -272,12 +272,16 @@ namespace MyCollections
             return false;
         }
 
-        public object this[int i]
+        public object? this[int i]
         {
-            get
+            get => set[i];
+            set
             {
                 OnCollectionReferenceChange(this,new CollectionHandlerEventArgs<T>("Изменена ссылка на", ref set[i]));
-                return set[i];
+                HashTablePoint<T> item = set[i];
+                Remove(item.Data);
+                Add(item);
+                set[i] = item;
             }
         }
 
@@ -286,7 +290,7 @@ namespace MyCollections
             if (set == null)
                 yield break;
 
-            foreach (HashTablePoint<T> point in set)
+            foreach (HashTablePoint<T>? point in set)
                 if (point != null && !point.IsDeleted)
                     yield return point.Data;
         }
