@@ -14,7 +14,7 @@ namespace MyCollections
             CollectionCountChanged?.Invoke(source, args);
         }
 
-        public void OnCollectionReferenceChange(object source, CollectionHandlerEventArgs<T> args)
+        public void OnCollectionReferenceChange(object source, CollectionHandlerEventArgs<T?> args)
         {
             CollectionReferenceChanged?.Invoke(source, args);
         }
@@ -158,16 +158,16 @@ namespace MyCollections
 
         public void Resize()
         {
-            HashTablePoint<T>[] newSet = new HashTablePoint<T>[set.Length * 2];
+            HashTablePoint<T?>[] newSet = new HashTablePoint<T?>[set.Length * 2];
             for (int i = 0; i < set.Length; i++)
             {
-                HashTablePoint<T> item = set[i];
+                HashTablePoint<T?> item = set[i];
                 if (item == null || item.IsDeleted) continue;
                 int index = Math.Abs(item.Data.GetHashCode()) % newSet.Length;
                 if (newSet[index] == null)
                 {
-                    newSet[index] = new HashTablePoint<T>(item);
-                    OnCollectionReferenceChange(this, new CollectionHandlerEventArgs<T>("изменена ссылка на", ref item));
+                    newSet[index] = new HashTablePoint<T?>(item);
+                    OnCollectionReferenceChange(this, new CollectionHandlerEventArgs<T?>("изменена ссылка на", ref item));
                 }
                 else
                 {
@@ -176,7 +176,7 @@ namespace MyCollections
                         int newIndex = (index + j) % newSet.Length;
                         if (newSet[newIndex] == null)
                         {
-                            newSet[newIndex] = new HashTablePoint<T>(item);
+                            newSet[newIndex] = new HashTablePoint<T?>(item);
                             break;
                         }
                     }
@@ -271,25 +271,101 @@ namespace MyCollections
 
             return false;
         }
+        // public MyHashTable<T> dataLengthSelect(int length)
+        // {
+        //     MyHashTable<T> selectedMyHashTable = new(0);
+        //     foreach (var data in set.Where(x => x.Count > length))
+        //         selectedMyHashTable.Add(data);
+        //     return selectedMyHashTable;
+        // }
+        //
+        // public MyHashTable<T> dataLengthSelectFor(int length)
+        // {
+        //     MyHashTable<T> selectedMyHashTable = new(0);
+        //     foreach (var data in MyHashTable)
+        //         if (data.Count > length)
+        //             selectedMyHashTable.Add(data);
+        //     return selectedMyHashTable;
+        // }
+        //
+        // public MyHashTable<T> dataLengthSelectLinq(int length)
+        // {
+        //     MyHashTable<T> selectedMyHashTable = new(0);
+        //     foreach (var m in
+        //              from data in set where data.Count > length select data)
+        //         selectedMyHashTable.set.Push(m);
+        //     return selectedMyHashTable;
+        // }
+        //
+        // public MyHashTable<T> IntersectMyHashTable(MyHashTable<T> otherMyHashTable)
+        // {
+        //     MyHashTable<T> result = new(0);
+        //     foreach (var item in set.Intersect(otherMyHashTable.set))
+        //         result.set.Push(item);
+        //     return result;
+        // }
+        //
+        // public MyHashTable<T> IntersectMyHashTableLinq(MyHashTable<T> otherMyHashTable)
+        // {
+        //     var query = from data in set
+        //         where (from other in otherMyHashTable.set select other).Contains(data)
+        //         select data;
+        //     MyHashTable<T> result = new(0);
+        //     foreach (var item in query)
+        //         result.set.Push(item);
+        //     return result;
+        // }
+        //
+        // public int MinMessagesLength() => set.Min(data => data.Count);
+        //
+        // public int MinMessagesLengthLinq() =>
+        //     (from data in set select data.Count).Min();
+        //
+        // public MyHashTable<T> JoinMyHashTableByLength(MyHashTable<T> otherMyHashTable)
+        // {
+        //     var joined = set.Join(
+        //         otherMyHashTable.set,
+        //         data1 => data1.Count,
+        //         data2 => data2.Count,
+        //         (data1, data2) => data1
+        //     );
+        //     MyHashTable<T> result = new(0);
+        //     foreach (var item in joined)
+        //         result.set.Push(item);
+        //     return result;
+        // }
+        //
+        // public MyHashTable<T> JoinMyHashTableByLengthLinq(MyHashTable<T> otherMyHashTable)
+        // {
+        //     var query = from data1 in set
+        //         join data2 in otherMyHashTable.set on data1.Count equals data2.Count
+        //         select data1;
+        //
+        //     MyHashTable<T> result = new(0);
+        //     foreach (var item in query)
+        //         result.set.Push(item);
+        //     return result;
+        // }
+
 
         public object? this[int i]
         {
             get => set[i];
             set
             {
-                OnCollectionReferenceChange(this,new CollectionHandlerEventArgs<T>("Изменена ссылка на", ref set[i]));
-                HashTablePoint<T> item = set[i];
-                Remove(item.Data);
-                Add(item);
-                set[i] = item;
+                if (value is HashTablePoint<T> item)
+                {
+                    Remove(item.Data);
+                    Add(item);
+                    set[i] = item;
+                    OnCollectionReferenceChange(this,
+                                      new CollectionHandlerEventArgs<T>("Изменена ссылка на", ref set[i]));
+                }
             }
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            if (set == null)
-                yield break;
-
             foreach (HashTablePoint<T>? point in set)
                 if (point != null && !point.IsDeleted)
                     yield return point.Data;
