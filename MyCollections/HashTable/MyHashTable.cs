@@ -82,16 +82,17 @@ namespace MyCollections
         {
             if (item == null)
             {
-                throw new Exception("Item cannot be null.");
+                throw new ArgumentNullException(nameof(item), "Item cannot be null.");
             }
-            
+            if (set.Length == 0)
+            {
+                set = new HashTablePoint<T>[10]; 
+            }
             OnCollectionCountChange(this, new CollectionHandlerEventArgs<T>("добавлен", ref item));
-            
             if (_count >= Math.Round(_loadFactor * set.Length))
             {
                 Resize();
             }
-
             int index = Math.Abs(item.GetHashCode() % set.Length);
             if (set[index] == null || set[index].IsDeleted)
             {
@@ -118,7 +119,6 @@ namespace MyCollections
                     }
                 }
             }
-
             if (_count >= set.Length * _loadFactor)
             {
                 Resize();
@@ -147,7 +147,6 @@ namespace MyCollections
                 Console.WriteLine($"{i}: {set[i].Data}");
             }
         }
-
         public void Clear()
         {
             for (int i = 0; i < set.Length; i++)
@@ -155,7 +154,6 @@ namespace MyCollections
                 set[i] = null;
             }
         }
-
         public void Resize()
         {
             HashTablePoint<T?>[] newSet = new HashTablePoint<T?>[set.Length * 2];
@@ -182,10 +180,8 @@ namespace MyCollections
                     }
                 }
             }
-
             set = newSet;
         }
-
         public bool Contains(T? item)
         {
             if (item == null) return false;
@@ -196,27 +192,21 @@ namespace MyCollections
                 {
                     return true;
                 }
-                else
+                for (var i = 0; i < set.Length; i++)
                 {
-                    for (int i = 0; i < set.Length; i++)
+                    var newIndex = (index + i) % set.Length;
+                    if (set[newIndex] != null && !set[newIndex].IsDeleted && set[newIndex].Data.Equals(item))
                     {
-                        int newIndex = (index + i) % set.Length;
-                        if (set[newIndex] != null && !set[newIndex].IsDeleted && set[newIndex].Data.Equals(item))
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
             }
-
             return false;
         }
-
         public void CopyTo(T[] array, int arrayIndex)
         {
             throw new NotImplementedException();
         }
-
         public T Search(T? item)
         {
             if (item == null) return default(T);
@@ -224,10 +214,7 @@ namespace MyCollections
             if (set[index] != null)
             {
                 if (!set[index].IsDeleted && set[index].Data != null && set[index].Data.Equals(item))
-                {
                     return set[index].Data;
-                }
-
                 for (int i = 0; i < set.Length; i++)
                 {
                     int newIndex = (index + i) % set.Length;
@@ -237,10 +224,8 @@ namespace MyCollections
                     }
                 }
             }
-
             return default(T);
         }
-
         public bool Remove(T? item)
         {
             if (item == null) return false;
@@ -254,7 +239,6 @@ namespace MyCollections
                     OnCollectionCountChange(this, new CollectionHandlerEventArgs<T>("удалён",ref set[index]));
                     return true;
                 }
-
                 for (int i = 0; i < set.Length; i++)
                 {
                     index = (index + i) % set.Length;
@@ -268,99 +252,120 @@ namespace MyCollections
                     }
                 }
             }
-
             return false;
         }
-        // public MyHashTable<T> dataLengthSelect(int length)
-        // {
-        //     MyHashTable<T> selectedMyHashTable = new(0);
-        //     foreach (var data in set.Where(x => x.Count > length))
-        //         selectedMyHashTable.Add(data);
-        //     return selectedMyHashTable;
-        // }
-        //
-        // public MyHashTable<T> dataLengthSelectFor(int length)
-        // {
-        //     MyHashTable<T> selectedMyHashTable = new(0);
-        //     foreach (var data in MyHashTable)
-        //         if (data.Count > length)
-        //             selectedMyHashTable.Add(data);
-        //     return selectedMyHashTable;
-        // }
-        //
-        // public MyHashTable<T> dataLengthSelectLinq(int length)
-        // {
-        //     MyHashTable<T> selectedMyHashTable = new(0);
-        //     foreach (var m in
-        //              from data in set where data.Count > length select data)
-        //         selectedMyHashTable.set.Push(m);
-        //     return selectedMyHashTable;
-        // }
-        //
-        // public MyHashTable<T> IntersectMyHashTable(MyHashTable<T> otherMyHashTable)
-        // {
-        //     MyHashTable<T> result = new(0);
-        //     foreach (var item in set.Intersect(otherMyHashTable.set))
-        //         result.set.Push(item);
-        //     return result;
-        // }
-        //
-        // public MyHashTable<T> IntersectMyHashTableLinq(MyHashTable<T> otherMyHashTable)
-        // {
-        //     var query = from data in set
-        //         where (from other in otherMyHashTable.set select other).Contains(data)
-        //         select data;
-        //     MyHashTable<T> result = new(0);
-        //     foreach (var item in query)
-        //         result.set.Push(item);
-        //     return result;
-        // }
-        //
-        // public int MinMessagesLength() => set.Min(data => data.Count);
-        //
-        // public int MinMessagesLengthLinq() =>
-        //     (from data in set select data.Count).Min();
-        //
-        // public MyHashTable<T> JoinMyHashTableByLength(MyHashTable<T> otherMyHashTable)
-        // {
-        //     var joined = set.Join(
-        //         otherMyHashTable.set,
-        //         data1 => data1.Count,
-        //         data2 => data2.Count,
-        //         (data1, data2) => data1
-        //     );
-        //     MyHashTable<T> result = new(0);
-        //     foreach (var item in joined)
-        //         result.set.Push(item);
-        //     return result;
-        // }
-        //
-        // public MyHashTable<T> JoinMyHashTableByLengthLinq(MyHashTable<T> otherMyHashTable)
-        // {
-        //     var query = from data1 in set
-        //         join data2 in otherMyHashTable.set on data1.Count equals data2.Count
-        //         select data1;
-        //
-        //     MyHashTable<T> result = new(0);
-        //     foreach (var item in query)
-        //         result.set.Push(item);
-        //     return result;
-        // }
+        public bool Remove(HashTablePoint<T>? pointToRemove)
+        {
+            if (pointToRemove == null) return false;
+            var item = pointToRemove.Data;
+            if (item == null) return false;
+            var index = Math.Abs(item.GetHashCode()) % set.Length;
+            if (set[index] != null)
+            {
+                if (!set[index].IsDeleted && set[index].Data != null && set[index].Data.Equals(item))
+                {
+                    _count--;
+                    set[index].IsDeleted = true;
+                    OnCollectionCountChange(this, new CollectionHandlerEventArgs<T>("удалён",ref set[index]));
+                    return true;
+                }
+                for (var i = 0; i < set.Length; i++)
+                {
+                    index = (index + i) % set.Length;
+                    if (set[index] == null) return false;
+                    if (!set[index].IsDeleted && set[index].Data != null && set[index].Data.Equals(item))
+                    {
+                        _count--;
+                        set[index].IsDeleted = true;
+                        OnCollectionCountChange(this, new CollectionHandlerEventArgs<T>("удалён",ref set[index]));
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public MyHashTable<T> DataSelect(Func<T, int, bool> predicate, int length)
+        {
+            MyHashTable<T> selectedMyHashTable = new(0);
+            foreach (var data in 
+                     set.Where(x => x != null && !x.IsDeleted && predicate(x.Data, length)))
+                     selectedMyHashTable.Add(data);
+            return selectedMyHashTable;
+        }
+        public MyHashTable<T> DataSelectLinq(Func<T, int, bool> predicate, int length)
+        {
+            MyHashTable<T> selectedMyHashTable = new(0);
+            foreach (var toAdd in from data in set 
+                     where data != null && !data.IsDeleted && predicate(data.Data, length) 
+                     select data)
+                selectedMyHashTable.Add(toAdd);
+            return selectedMyHashTable;
+        }
+        public T? MinFromEmojis(IComparer<T> comparer)
+        {
+            return set
+                .Where(x => x != null && !x.IsDeleted)
+                .Select(data => data.Data)
+                .Min(comparer);
+        }
+        public T? MinFromEmojisLinq(IComparer<T> comparer)
+        {
+            return (from data in set
+                    where data != null && !data.IsDeleted
+                    select data.Data)                      
+                .Min(comparer);
+        }
+        public Dictionary<TKey, List<T?>> GroupBy<TKey>(Func<T, TKey> keySelector) where TKey : notnull
+        {
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
 
+            var groups = new Dictionary<TKey, List<T?>>();
 
+            foreach (var point in set)
+            {
+                if (point == null || point.IsDeleted)
+                    continue;
+
+                var data = point.Data;
+                if (data == null) continue;
+                var key = keySelector(data);
+
+                if (!groups.ContainsKey(key))
+                    groups[key] = new List<T?>();
+
+                groups[key].Add(data);
+            }
+
+            return groups;
+        }
+        public Dictionary<TKey, List<T>> GroupByLinq<TKey>(Func<T, TKey> keySelector) where TKey : notnull
+        {
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+
+            return set
+                .Where(point => point != null && !point.IsDeleted)
+                .Select(point => point.Data)
+                .GroupBy(keySelector)
+                .ToDictionary(g => g.Key, g => g.ToList());
+        }
         public object? this[int i]
         {
             get => set[i];
             set
             {
-                if (value is HashTablePoint<T> item)
+                if (value is not HashTablePoint<T> item)
+                    throw new ArgumentException("Неверный тип элемента");
+                if (set[i] != null)
                 {
-                    Remove(item.Data);
-                    Add(item);
-                    set[i] = item;
-                    OnCollectionReferenceChange(this,
-                                      new CollectionHandlerEventArgs<T>("Изменена ссылка на", ref set[i]));
+                    Remove(set[i]!.Data);
                 }
+
+                Add(item);
+                set[i] = item;
+                OnCollectionReferenceChange(this,
+                    new CollectionHandlerEventArgs<T>("Изменена ссылка на", ref set[i]));
             }
         }
 

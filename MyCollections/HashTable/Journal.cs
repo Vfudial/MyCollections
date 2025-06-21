@@ -8,7 +8,7 @@ public class Journal<T> where T : IInit, new()
 
     public void WriteRecord(object source, CollectionHandlerEventArgs<T> args)
     {
-        journal.Add($"{args.Type} элемент {args.Item}");
+        journal.Add($"{args.Type + " элемент",-30} {args.Item}");
     }
 
     public void PrintJournal()
